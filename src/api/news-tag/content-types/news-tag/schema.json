@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news_tags",
+  "info": {
+    "singularName": "news-tag",
+    "pluralName": "news-tags",
+    "displayName": "NewsTag"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "dashboard_news_items": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dashboard-news-item.dashboard-news-item",
+      "inversedBy": "tags"
+    }
+  }
+}
