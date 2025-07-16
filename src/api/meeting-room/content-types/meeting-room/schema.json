@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "meeting_rooms",
+  "info": {
+    "singularName": "meeting-room",
+    "pluralName": "meeting-rooms",
+    "displayName": "meeting-room"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "capacity": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "available": {
+      "type": "boolean"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "room"
+    }
+  }
+}
