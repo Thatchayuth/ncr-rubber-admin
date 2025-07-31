@@ -1,20 +1,15 @@
-// import type { Core } from '@strapi/strapi';
+import { initIO } from './extensions/websocket/server';
 
 export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
-   */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register({ strapi }: { strapi: any }) {
+    // ...
+  },
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+  bootstrap({ strapi }: { strapi: any }) {
+    const httpServer = strapi.server.httpServer;
+    initIO(httpServer);
+
+    // ให้ controller ใช้ได้ด้วย
+    strapi.io = httpServer.io;
+  },
 };
